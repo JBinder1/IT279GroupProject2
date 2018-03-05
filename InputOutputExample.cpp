@@ -1,3 +1,10 @@
+#include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
 int main(int argc, char *argv[]) {
     if(argc == 1){
         cout<<"No command line argument given.\n"
@@ -32,10 +39,12 @@ int main(int argc, char *argv[]) {
     // File output. It prints every element of list onto its own line
     // in a file named "[inputFileName]_sorted.txt"
     outputFile.open(outputFileName);
-    while(list.getSize() > 0){
-        outputFile<<list.readHead()<<endl;
-        list.deleteHead();
-    }
+    // TODO: have your data structure ptint each element to the file. Example below.
+    //while(list.getSize() > 0){
+    //    
+    //    outputFile<<list.readHead()<<endl;
+    //    list.deleteHead();
+    //}
     outputFile.close();
     
     return 0; 

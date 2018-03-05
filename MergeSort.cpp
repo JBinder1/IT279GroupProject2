@@ -5,15 +5,6 @@
 #include <fstream>
 #include <vector>
 using namespace std;
-//Simple function to print out array on screen for testing
-void ScreenPrint(int value[], int arraySize)
-{
-	int i;
-	for (i = 0; i < arraySize; i++)
-	{
-		printf("%d \n", value[i]);
-	}
-}
 //Sees "arr[]" as two subarrays.  a->b and b-> last
 void merge(int arr[], int a, int b, int last)
 {
@@ -117,14 +108,7 @@ int main(int argc, char *argv[])
 		arr[i] = vector.back();
 		vector.pop_back();
 	}
-	printf("Starting Array: \n");
-	ScreenPrint(arr, arrSize);
-
 	mergeSort(arr, 0, arrSize - 1);
-
-	printf("\nSorted array: \n");
-	ScreenPrint(arr, arrSize);
-
 	outputFile.open(outputFileName);
 	int i = 0;
 	while (arrSize > 0) {

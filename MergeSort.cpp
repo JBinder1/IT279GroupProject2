@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 	if (argc == 1) {
 		cout << "No command line argument given.\n"
 			"Please provide the input file name as an argument.\n"
-			"Ex: TODO:[your program's name] file.txt\n";
+			"Ex: MergeSort file.txt\n";
 		return -1;
 	}
 	vector<int> vector;
@@ -93,9 +93,12 @@ int main(int argc, char *argv[])
 	ofstream outputFile;
 	string inputFileName(argv[1]);
 	string outputFileName = inputFileName;
-	inputFile.open(inputFileName);
 	outputFileName.append("_sorted.txt");
 	long inputNum;
+	
+	// File input. It reads every line of the argued file into a long, then
+	// adds it to the list.
+	inputFile.open(inputFileName);
 	if (inputFile.is_open()) {
 		while (inputFile >> inputNum) {
 			 // adds each inputNum to your data structure
@@ -104,9 +107,10 @@ int main(int argc, char *argv[])
 		inputFile.close();
 	}
 	else {
-		cout << "Unable to open " << endl;
+		cout << "Unable to open " << inputFileName << endl;
 		return -1;
 	}
+	
 	//perform sort here
 	const int vectorsize = vector.size();
 	int arr[vectorsize];
@@ -120,6 +124,9 @@ int main(int argc, char *argv[])
 	printf("\nSorted array: \n");
 	ScreenPrint(arr, arrSize);
 
+	
+	// File output. It prints every element of list onto its own line
+	// in a file named "[inputFileName]_sorted.txt"
 	outputFile.open(outputFileName);
 	int i = 0;
 	while (arrSize > 0) {

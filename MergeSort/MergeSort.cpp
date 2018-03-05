@@ -1,33 +1,22 @@
+
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
 #include <fstream>
 #include <vector>
-
 using namespace std;
-
-//Simple function to print out array on screen for testing
-void ScreenPrint(int value[], int arraySize)
-{
-	int i;
-	for (i = 0; i < arraySize; i++)
-	{
-		printf("%d \n", value[i]);
-	}
-}
-
 //Sees "arr[]" as two subarrays.  a->b and b-> last
-void merge(int arr[], int a, int b, int last)
+void merge(long arr[], long a, long b, long last)
 {
-	int x;
-	int y;
-	int Merged;
-	int temp0 = b - a + 1;
-	int temp1 = last - b;
+	long x;
+	long y;
+	long Merged;
+	long temp0 = b - a + 1;
+	long temp1 = last - b;
 
 	//breaks down "arr[]" into two temporary arrays
-	int Left[temp0];
-	int Right[temp1];
+	long Left[temp0];
+	long Right[temp1];
 	//Copy data to the left subarray
 	for (x = 0; x < temp0; x++)
 	{
@@ -70,19 +59,17 @@ void merge(int arr[], int a, int b, int last)
 		Merged++; //Move to next value in array
 	}
 }
-
 //Recursive method for merging
-void mergeSort(int arr[], int a, int last)
+void mergeSort(long arr[], long a, long last)
 {
 	if (a < last)
 	{
-		int b = a + (last - a) / 2;
+		long b = a + (last - a) / 2;
 		mergeSort(arr, a, b);
 		mergeSort(arr, b + 1, last);
 		merge(arr, a, b, last);
 	}
 }
-
 //Driver
 int main(int argc, char *argv[])
 {
@@ -92,19 +79,17 @@ int main(int argc, char *argv[])
 			"Ex: MergeSort file.txt\n";
 		return -1;
 	}
-
-	vector<int> vector;
+	vector<long> vector;
 	ifstream inputFile;
 	ofstream outputFile;
 	string inputFileName(argv[1]);
 	string outputFileName = inputFileName;
+	inputFile.open(inputFileName);
 	outputFileName.append("_sorted.txt");
 	long inputNum;
-
-    inputFile.open(inputFileName);
 	if (inputFile.is_open()) {
 		while (inputFile >> inputNum) {
-			// adds each inputNum to the vector
+			 // adds each inputNum to your data structure
 			vector.push_back(inputNum);
 		}
 		inputFile.close();
@@ -113,10 +98,9 @@ int main(int argc, char *argv[])
 		cout << "Unable to open " << inputFileName << endl;
 		return -1;
 	}
-
-	// Performs MergeSort
+	//perform sort here
 	const int vectorsize = vector.size();
-	int arr[vectorsize];
+	long arr[vectorsize];
 	int arrSize = sizeof(arr) / sizeof(arr[0]);
 	printf("Array has  %d  Elements. \n", arrSize);
 	for (int i = 0; i < arrSize; i++)
@@ -124,14 +108,7 @@ int main(int argc, char *argv[])
 		arr[i] = vector.back();
 		vector.pop_back();
 	}
-	//printf("Starting Array: \n");
-	//ScreenPrint(arr, arrSize);
-
 	mergeSort(arr, 0, arrSize - 1);
-
-	//printf("\nSorted array: \n");
-	//ScreenPrint(arr, arrSize);
-
 	outputFile.open(outputFileName);
 	int i = 0;
 	while (arrSize > 0) {
@@ -141,6 +118,5 @@ int main(int argc, char *argv[])
 	}
 	outputFile.close();
 
-    cout<<"\nSuccess!\n";
 	return 0;
 }

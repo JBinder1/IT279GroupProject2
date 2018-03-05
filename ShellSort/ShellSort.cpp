@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     if(argc == 1){
         cout<<"No command line argument given.\n"
                 "Please provide the input file name as an argument.\n"
-                "Ex: TODO:[your program's name] file.txt\n";
+                "Ex: ShellSort file.txt\n";
         return -1;
     }
     
@@ -60,8 +60,8 @@ int main(int argc, char *argv[]) {
     inputFile.open(inputFileName);
     if(inputFile.is_open()){
         while(inputFile >> inputNum){
-            // TODO: add each inputNum to your data structure, e.g. list.push(inputNum);
-	  aVector.push_back(inputNum);
+            // Adds each inputNum to the vector
+	        aVector.push_back(inputNum);
         }
         inputFile.close();
     }else{
@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
     
-    // TODO: perform sort here
+    // Performs the sort
     shellSort(aVector);
     
     // File output. It prints every element of list onto its own line
@@ -77,10 +77,11 @@ int main(int argc, char *argv[]) {
     outputFile.open(outputFileName);
     if(outputFile.good()) {
       for(size_t i = 0; i < aVector.size(); i++) {
-	outputFile << aVector.at(i) << endl;
+        outputFile << aVector.at(i) << endl;
       } 
+      cout << "Success!\n";
     } else {
-      cout << "Error opening file." << endl;
+        cout << "Error opening file. " << endl;
     }
     outputFile.close();
     

@@ -1,6 +1,6 @@
-# IT279GroupProject2
+# IT279LongSorting
 
-Three simple C++ programs implementing mergesort, shellsort, and insertion sort to sort lists of longs.
+IT 279, group project 2. Three simple C++ programs implementing mergesort, shellsort, and insertion sort to sort lists of longs.
 
 # Assignment:
 
